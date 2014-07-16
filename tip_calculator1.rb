@@ -1,23 +1,25 @@
-###!/Users/martin/.rvm/rubies/ruby-2.0.0-p481/lib/ruby/2.0.0/ruby
+## #!/ where the fuck is the interpreter on a mac?
+require 'bigdecimal'
+require 'bigdecimal/util'
 
-meal = 25
+meal = 25.10
 tax = 10
 tip = 2
 
 ### End of user editable section ###
 
-# Make sure there is a float in the calc or only int's will be returned
-# Use divide by 100.00, something like: meal = meal.to_f, or num.fdiv(num2)
 
-tax_value = meal * tax / 100.00
-meal_with_tax = meal + tax_value
-tip_value = meal * tip / 100.00
+# Originally used floats, but that's a bad idea for decimal currency
+# bigdecimals do a better job of handling base 10.
+
+tax_value = meal.to_d * tax.to_d / 100.to_d
+meal_with_tax = meal.to_d + tax_value.to_d
+tip_value = meal.to_d * tip.to_d / 100.to_d
 total_cost = meal_with_tax + tip_value
 
 
 
-puts "The pre-tax cost or your meal was $#{meal}"
-puts "At #{tax}%, tax for this meal is $#{tax_value}"
-puts "For a #{tip}% tip, you should leave $#{tip_value}"
-puts "The grand total for this meal is then $#{total_cost}"
-#puts "2: The grand total for this meal is then $#{sprintf("%0.02f", total_cost)}"
+puts "The pre-tax cost or your meal was $#{sprintf("%0.02f", meal)}"
+puts "At #{sprintf("%0.02f", tax)}%, tax for this meal is $#{sprintf("%0.02f", tax_value)}"
+puts "For a #{sprintf("%0.02f", tip)}% tip, you should leave $#{sprintf("%0.02f", tip_value)}"
+puts "The grand total for this meal is then $#{sprintf("%0.02f", total_cost)}"
