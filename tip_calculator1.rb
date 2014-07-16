@@ -3,8 +3,8 @@ require 'bigdecimal'
 require 'bigdecimal/util'
 
 meal = 25.10
-tax = 10
-tip = 2
+tax = 10.5
+tip = 0.9
 
 ### End of user editable section ###
 
@@ -19,7 +19,7 @@ total_cost = meal_with_tax + tip_value
 
 
 
-puts "The pre-tax cost or your meal was $#{sprintf("%0.02f", meal)}"
-puts "At #{sprintf("%0.02f", tax)}%, tax for this meal is $#{sprintf("%0.02f", tax_value)}"
-puts "For a #{sprintf("%0.02f", tip)}% tip, you should leave $#{sprintf("%0.02f", tip_value)}"
-puts "The grand total for this meal is then $#{sprintf("%0.02f", total_cost)}"
+puts "The pre-tax cost of your meal was $%0.02f." % [meal]
+puts "At %0.2f%%, tax for this meal is $%0.2f." % [tax, tax_value]
+puts "For a %0.02f%% tip, you should leave $%0.02f." % [tip, tip_value]
+puts "The grand total for this meal is then $%0.02f." % [total_cost]
