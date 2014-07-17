@@ -4,17 +4,19 @@ require 'bigdecimal'
 require 'bigdecimal/util'
 
 
-#tax = 12
-#tip = 10
+tax_default = 12
+tip_default = 10
 
 ### End of user editable section ###
 
 puts "\nPlease enter the meal cost before tax"
 meal = gets.chomp.to_d
+
 puts "Please enter the tax percentage you wish to pay"
-tax = gets.chomp.to_d
+(entry = gets.chomp) != "" ? tax = entry.to_d : tax = tax_default
+
 puts "Please enter the tip percentage you wish to pay"
-tip = gets.chomp.to_d
+(entry = gets.chomp) != "" ? tip = entry.to_d : tip = tip_default
 
 
 def calc_percent(amount, percentage)
